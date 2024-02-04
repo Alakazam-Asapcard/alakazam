@@ -23,7 +23,7 @@ amqp.connect('amqp://localhost', function(error0, connection){
         csv({
             delimiter: ';',
             noheader: true,
-            headers: ['Transaction_ID', 'Transaction_Date', 'Person_ID', 'Name', 'Age', 'Amount', 'Installment_Number']
+            headers: ['transaction_id', 'transaction_date', 'person_id', 'name', 'age', 'amount', 'installment_number']
         }).fromFile(csvFilePath).then((jsonObj) => {
             for(let line of jsonObj) {
                 channel.publish(exchange, '', Buffer.from(JSON.stringify(line)));
