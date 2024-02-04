@@ -17,18 +17,21 @@ Siga os passos abaixo para configurar o ambiente de desenvolvimento:
 
 1. **Clone o repositório**
 
+
 ```bash
 git clone https://github.com/Alakazam-Asapcard/alakazam.git
 cd alakazam
 ```
 
 2. **Configure e inicie o RabbitMQ**
+   
 
 Garanta que o RabbitMQ esteja instalado e em execução na sua máquina. Por padrão, o RabbitMQ inicia um servidor na porta 5672.
 
 3. **Inicie a aplicação consumidora no Spring Boot**
+   
 
-Dentro do diretório do consumidor execute:
+Você precisará estar na pasta diretório do consumidor para executar, siga os seguintes passos:
 
 ```bash
 cd java-consumer
@@ -39,8 +42,9 @@ java -jar target/java-consumer-0.0.1-SNAPSHOT.jar --spring.profiles.active=trans
 Esta aplicação vai consumir as mensagens publicadas pelo produtor Node.js.
 
 4. **Inicie o produtor de mensagens Node.js**
+   
 
-Dentro do diretório do produtor execute:
+Você precisará estar na pasta diretório do consumidor para executar, siga os seguintes passos:
 
 ```bash
 cd ..
