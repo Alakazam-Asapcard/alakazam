@@ -13,31 +13,21 @@ public class ConsumerConfiguration {
 
 	@Bean
 	public FanoutExchange fanout() {
-		return new FanoutExchange("transactions");
+		return new FanoutExchange("transactions", false, false);
 	}
 
 	@Profile("receiver")
 	private static class ReceiverConfig {
 
 		@Bean
-		public Queue filaTeste() {
-			return new Queue("filateste");
-		}
-
-		/*@Bean
-		public Queue autoDeleteQueue2() {
+		public Queue autoDeleteQueue() {
 			return new AnonymousQueue();
-		}*/
+		}
 
 		@Bean
-		public Binding binding1(FanoutExchange fanout, Queue filaTeste) {
-			return BindingBuilder.bind(filaTeste).to(fanout);
+		public Binding binding(FanoutExchange fanout, Queue autoDeleteQueue) {
+			return BindingBuilder.bind(autoDeleteQueue).to(fanout);
 		}
-
-		/*@Bean
-		public Binding binding2(FanoutExchange fanout, Queue autoDeleteQueue2) {
-			return BindingBuilder.bind(autoDeleteQueue2).to(fanout);
-		}*/
 
 		@Bean
 		public TransactionReceiver receiver() {

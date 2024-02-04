@@ -19,7 +19,7 @@ public class JavaConsumerApplication {
 		return args -> {
 			System.out.println("This app uses Spring Profiles to control its behavior.\n");
 			System.out.println(
-					"Sample usage: java -jar rabbit-tutorials.jar --spring.profiles.active=");
+					"Sample usage: java -jar rabbit-tutorials.jar --spring.profiles.active=transaction,receiver");
 		};
 	}
 
