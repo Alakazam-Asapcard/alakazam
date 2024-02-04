@@ -27,8 +27,8 @@ public class Person {
 	@NotNull
 	private int age;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("person")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personId", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("person_id")
 	private List<Transaction> transactions;
 
 	public Person(@NotBlank String id, @NotBlank String name, @NotNull int age) {

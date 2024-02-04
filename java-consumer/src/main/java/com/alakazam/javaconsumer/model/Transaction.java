@@ -7,14 +7,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -26,7 +19,7 @@ public class Transaction {
 	private String id;
 
 	@NotBlank
-	@Column(name = "person_id")
+	@JoinColumn(name = "person_id")
 	@ManyToOne
 	@JsonIgnoreProperties("transactions")
 	private Person personId;
@@ -39,11 +32,7 @@ public class Transaction {
 	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private BigDecimal amount;
 
-	/*@ManyToOne
-	@JsonIgnoreProperties("transactions")
-	private Person person;*/
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "transaction", cascade = CascadeType.REMOVE)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "transactionId", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("transaction_id")
 	private List<Installment> installments;
 	
