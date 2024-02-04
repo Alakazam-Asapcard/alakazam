@@ -37,6 +37,9 @@ public class Person {
 		this.age = age;
 	}
 
+	public Person() {
+	}
+
 	public String getId() {
 		return id;
 	}

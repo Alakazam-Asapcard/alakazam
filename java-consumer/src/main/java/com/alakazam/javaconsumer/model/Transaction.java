@@ -7,14 +7,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -23,35 +16,34 @@ import jakarta.validation.constraints.NotNull;
 public class Transaction {
 
 	@Id
+	@NotBlank
 	private String id;
 
-	@NotBlank
-	@Column(name = "person_id")
 	@ManyToOne
 	@JsonIgnoreProperties("transactions")
-	private Person personId;
+	private Person person;
 
 	@NotNull
 	@Column(name = "transaction_date")
-	private LocalDateTime transactionDate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
+	private LocalDateTime transaction_date;
 
 	@NotNull
 	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private BigDecimal amount;
 
-	/*@ManyToOne
-	@JsonIgnoreProperties("transactions")
-	private Person person;*/
-
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "transaction", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("transaction_id")
+	@JsonIgnoreProperties("transaction")
 	private List<Installment> installments;
 	
-	public Transaction(String id, Person personId, LocalDateTime transactionDate, BigDecimal amount) {
+	public Transaction(String id, Person person, LocalDateTime transaction_date, BigDecimal amount) {
 		this.id = id;
-		this.personId = personId;
-		this.transactionDate = transactionDate;
+		this.person = person;
+		this.transaction_date = transaction_date;
 		this.amount = amount;
+	}
+
+	public Transaction() {
 	}
 
 	public String getId() {
@@ -62,20 +54,20 @@ public class Transaction {
 		this.id = id;
 	}
 
-	public Person getPersonId() {
-		return personId;
+	public Person getPerson() {
+		return person;
 	}
 
-	public void setPersonId(Person personId) {
-		this.personId = personId;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
-	public LocalDateTime getTransactionDate() {
-		return transactionDate;
+	public LocalDateTime getTransaction_date() {
+		return transaction_date;
 	}
 
-	public void setTransactionDate(LocalDateTime transactionDate) {
-		this.transactionDate = transactionDate;
+	public void setTransaction_date(LocalDateTime transaction_date) {
+		this.transaction_date = transaction_date;
 	}
 
 	public BigDecimal getAmount() {
