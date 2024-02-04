@@ -29,7 +29,7 @@ Garanta que o RabbitMQ esteja instalado e em execução na sua máquina. Por pad
 
 3. **Inicie a aplicação consumidora no Spring Boot**
 
-Dentro do diretório do consumidor execute:
+Você precisará estar na pasta diretório do consumidor para executar, siga os seguintes passos:
 
 ```bash
 cd java-consumer
@@ -45,7 +45,7 @@ Garanta que o MySQl esteja instalado e em execução na sua máquina. Por padrã
 
 5. **Inicie o produtor de mensagens Node.js**
 
-Dentro do diretório do produtor execute:
+Você precisará estar na pasta diretório do produtor para executar, siga os seguintes passos:
 
 ```bash
 cd ..
