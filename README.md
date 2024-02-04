@@ -1,6 +1,6 @@
-# Projeto de Integração RabbitMQ com Spring Boot e JavaScript
+# Projeto de Integração RabbitMQ com Spring Boot e JavaScript para Processamento de Transações Financeiras
 
-Este projeto demonstra uma integração eficaz entre uma aplicação produtora de mensagens em JavaScript, utilizando RabbitMQ como intermediário de mensagens, e uma aplicação consumidora em Java Spring Boot, que consome e processa estas mensagens.
+Este projeto ilustra a implementação de um sistema robusto para o processamento de transações financeiras, com uma aplicação produtora responsável pela leitura e publicação de transações a partir de arquivos CSV em JavaScript, e uma aplicação consumidora em Java Spring Boot, que consome essas mensagens, realiza a validação das transações através de um segundo arquivo de conciliação e persiste os dados validados em um banco de dados relacional.
 
 ## Pré-requisitos
 
