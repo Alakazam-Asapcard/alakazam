@@ -27,14 +27,17 @@ public class Person {
 	@NotNull
 	private int age;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personId", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("person_id")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "person", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("person")
 	private List<Transaction> transactions;
 
 	public Person(@NotBlank String id, @NotBlank String name, @NotNull int age) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
+	}
+
+	public Person() {
 	}
 
 	public String getId() {
