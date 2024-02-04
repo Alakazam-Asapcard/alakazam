@@ -26,31 +26,36 @@ cd alakazam
 
 Garanta que o RabbitMQ esteja instalado e em execução na sua máquina. Por padrão, o RabbitMQ inicia um servidor na porta 5672.
 
-3. **Inicie o produtor de mensagens Node.js**
+3. **Inicie a aplicação consumidora no Spring Boot**
+
+Dentro do diretório do consumidor execute:
+
+```bash
+cd java-consumer
+./mvnw clean package
+java -jar target/java-consumer-0.0.1-SNAPSHOT.jar --spring.profiles.active=transaction,receiver --rabbitReceiver.client.duration=60000
+```
+
+Esta aplicação vai consumir as mensagens publicadas pelo produtor Node.js.
+
+4. **Inicie o produtor de mensagens Node.js**
 
 Dentro do diretório do produtor execute:
 
 ```bash
+cd ..
+cd javascript-producer
 npm install
 node producer.js
 ```
 
 Este script vai iniciar a publicação de mensagens em um canal do RabbitMQ.
 
-4. **Inicie a aplicação consumidora no Spring Boot**
 
-Dentro do diretório do consumidor execute:
-
-```bash
-mvn clean install
-mvn spring-boot:run
-```
-
-Esta aplicação vai consumir as mensagens publicadas pelo produtor Node.js.
 
 ## Como usar
 
-Após iniciar tanto o produtor quanto o consumidor, o sistema estará em plena operação. O produtor Node.js publicará mensagens em um canal do RabbitMQ, que serão consumidas pela aplicação Spring Boot. A lógica de processamento das mensagens pode ser ajustada conforme a necessidade do seu projeto.
+Após iniciar tanto o consumidor quanto o produtor, o sistema estará em plena operação. O produtor Node.js publicará mensagens em um canal do RabbitMQ, que serão consumidas pela aplicação Spring Boot. A lógica de processamento das mensagens pode ser ajustada conforme a necessidade do seu projeto. Caso o usuário queira utilizar um arquivo diferente, ele deve adicioná-lo à pasta INPUT com o mesmo nome do arquivo CSV anterior e executar o producer.js novamente
 
 ## Autores
 
