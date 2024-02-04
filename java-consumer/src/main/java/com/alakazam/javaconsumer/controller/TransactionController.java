@@ -1,9 +1,9 @@
-package com.alakazam.javaconsumer.consumer;
+package com.alakazam.javaconsumer.controller;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.util.StopWatch;
 
-public class TransactionReceiver {
+public class TransactionController {
 
 	@RabbitListener(queues = "#{autoDeleteQueue.name}")
 	public void receive(String in) throws InterruptedException {
