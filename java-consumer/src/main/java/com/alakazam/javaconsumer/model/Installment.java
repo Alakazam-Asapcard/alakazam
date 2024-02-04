@@ -17,24 +17,25 @@ public class Installment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
-	@JoinColumn(name = "transaction_id")
 	@ManyToOne
 	@JsonIgnoreProperties("installments")
-	private Transaction transactionId;
+	private Transaction transaction;
 
 	@NotNull
 	@Column(name = "installment_number")
-	private int installmentNumber;
+	private int installment_number;
 
 	@NotNull
 	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private BigDecimal value;
 	
-	public Installment(@NotBlank Transaction transactionId, @NotNull int installmentNumber, @NotNull BigDecimal value) {
-		this.transactionId = transactionId;
-		this.installmentNumber = installmentNumber;
+	public Installment(@NotBlank Transaction transaction, @NotNull int installment_number, @NotNull BigDecimal value) {
+		this.transaction = transaction;
+		this.installment_number = installment_number;
 		this.value = value;
+	}
+
+	public Installment() {
 	}
 
 	public Long getId() {
@@ -45,20 +46,20 @@ public class Installment {
 		this.id = id;
 	}
 
-	public Transaction getTransactionId() {
-		return transactionId;
+	public Transaction getTransaction() {
+		return transaction;
 	}
 
-	public void setTransactionId(Transaction transactionId) {
-		this.transactionId = transactionId;
+	public void setTransaction(Transaction transaction) {
+		this.transaction = transaction;
 	}
 
-	public int getInstallmentNumber() {
-		return installmentNumber;
+	public int getInstallment_number() {
+		return installment_number;
 	}
 
-	public void setInstallmentNumber(int installmentNumber) {
-		this.installmentNumber = installmentNumber;
+	public void setInstallment_number(int installment_number) {
+		this.installment_number = installment_number;
 	}
 
 	public BigDecimal getValue() {
