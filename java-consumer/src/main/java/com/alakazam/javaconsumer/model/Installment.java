@@ -5,11 +5,13 @@ import java.math.BigDecimal;
 import org.springframework.data.annotation.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -24,7 +26,9 @@ public class Installment {
 
 	@NotBlank
 	@Column(name = "transaction_id")
-	private String transactionId;
+	@ManyToOne
+	@JsonIgnoreProperties("installments")
+	private Transaction transactionId;
 
 	@NotNull
 	@Column(name = "installment_number")
@@ -33,8 +37,8 @@ public class Installment {
 	@NotNull
 	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private BigDecimal value;
-
-	public Installment(@NotBlank String transactionId, @NotNull int installmentNumber, @NotNull BigDecimal value) {
+	
+	public Installment(@NotBlank Transaction transactionId, @NotNull int installmentNumber, @NotNull BigDecimal value) {
 		this.transactionId = transactionId;
 		this.installmentNumber = installmentNumber;
 		this.value = value;
@@ -48,11 +52,11 @@ public class Installment {
 		this.id = id;
 	}
 
-	public String getTransactionId() {
+	public Transaction getTransactionId() {
 		return transactionId;
 	}
 
-	public void setTransactionId(String transactionId) {
+	public void setTransactionId(Transaction transactionId) {
 		this.transactionId = transactionId;
 	}
 
