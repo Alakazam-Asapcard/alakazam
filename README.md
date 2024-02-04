@@ -10,6 +10,7 @@ Para executar este projeto, você precisará ter instalado:
 - [Java JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) ou superior
 - [Maven](https://maven.apache.org/)
 - [RabbitMQ](https://www.rabbitmq.com/download.html)
+- [MySQL](https://www.mysql.com/)
 
 ## Instalação
 
@@ -38,7 +39,11 @@ java -jar target/java-consumer-0.0.1-SNAPSHOT.jar --spring.profiles.active=trans
 
 Esta aplicação vai consumir as mensagens publicadas pelo produtor Node.js.
 
-4. **Inicie o produtor de mensagens Node.js**
+4. **Configure e inicie o MySQL**
+
+Garanta que o MySQl esteja instalado e em execução na sua máquina. Por padrão, o arquivo aplication.yml no caminho alakazam/java-consumer/src/main/resources utiliza o username: root e password: 123456, você precisará alterar esses dados para os que você configurou no MySQL em sua máquina. 
+
+5. **Inicie o produtor de mensagens Node.js**
 
 Dentro do diretório do produtor execute:
 
