@@ -29,6 +29,10 @@ public class PayloadDto {
         this.installment_number = installment_number;
     }
 
+    public PayloadDto() {
+
+    }
+
     public String getTransaction_id() {
         return transaction_id;
     }
