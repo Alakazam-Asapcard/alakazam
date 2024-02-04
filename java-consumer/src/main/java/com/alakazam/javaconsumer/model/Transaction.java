@@ -9,6 +9,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -18,7 +19,7 @@ public class Transaction {
     @Id
     private String id;
 
-    @NotNull
+    @NotBlank
     @Column(name = "person_id")
     private String personId;
 
