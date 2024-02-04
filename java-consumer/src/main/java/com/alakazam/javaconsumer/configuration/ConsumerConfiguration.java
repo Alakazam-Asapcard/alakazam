@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import com.alakazam.javaconsumer.consumer.TransactionReceiver;
+import com.alakazam.javaconsumer.controller.TransactionController;
 
 @Profile({ "transaction" })
 @Configuration
@@ -30,8 +30,8 @@ public class ConsumerConfiguration {
 		}
 
 		@Bean
-		public TransactionReceiver receiver() {
-			return new TransactionReceiver();
+		public TransactionController receiver() {
+			return new TransactionController();
 		}
 	}
 }
