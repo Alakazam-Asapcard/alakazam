@@ -52,4 +52,18 @@ Esta aplicação vai consumir as mensagens publicadas pelo produtor Node.js.
 
 Após iniciar tanto o produtor quanto o consumidor, o sistema estará em plena operação. O produtor Node.js publicará mensagens em um canal do RabbitMQ, que serão consumidas pela aplicação Spring Boot. A lógica de processamento das mensagens pode ser ajustada conforme a necessidade do seu projeto.
 
+## Autores
+
+- [Carina Maleski](https://github.com/carina-maleski)
+
+- [João Bezerra](https://github.com/Joaobezerrajr)
+
+- [Daniel Lugli](https://github.com/luglifilho)
+
+- [Raphael Luccas](https://github.com/RaphaelLuccas)
+
+- [Giovanni Torelli](https://github.com/Torelli)
+
+- [Luciana Ramos](https://github.com/xluhramosx)
+
 
